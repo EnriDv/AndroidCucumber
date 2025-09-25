@@ -33,3 +33,8 @@ npx wdio run wdio.conf.js
 npx wdio run wdio.conf.js --cucumberOpts.tagExpression="@addAlarm"
 
 npm run clean:allure && npx wdio run wdio.conf.js --cucumberOpts.tagExpression="@ addAlarm "
+
+    hostname: 'hub.browserstack.com',
+    port: 443,
+    path: '/wd/hub',
+    protocol: 'https',

@@ -21,12 +21,6 @@ exports.config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-
-    hostname: 'hub.browserstack.com',
-    port: 443,
-    path: '/wd/hub',
-    protocol: 'https',
-
     specs: [
         //'./test/specs/**/*.js',
         './features/**/*.feature',
@@ -59,32 +53,14 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-
-        platformName: 'android',
-        'appium:automationName': 'UiAutomator2',
-        
-        'appium:app': 'bs://c165fbbad93ea525bd5b4b6ca59b129eea74cf32',
-
-        'bstack:options': {
-        deviceName: 'Samsung Galaxy S22 Ultra',
-        platformVersion: '12.0',
-        platformName: 'android',
-        projectName: 'Proyecto QA',
-        buildName: 'Build Alarmas',
-        sessionName: 'Prueba APK Alarmas',
-        local: false  // si no necesitas BrowserStack Local
-        }
+        // capabilities for local Appium web tests on an Android Emulator
+        "platformName": "Android",
+        "appium:platformVersion": "16.0",
+        "appium:deviceName": "Medium Phone API 36.0",
+        "appium:automationName": "UiAutomator2",
+        "appium:appPackage": "com.google.android.deskclock",
+        "appium:appActivity": "com.android.deskclock.DeskClock"
     }],
-
-    commonCapabilities: {
-        'bstack:options': {
-        projectName: "BrowserStack Samples",
-        buildName: 'browserstack build',
-        sessionName: 'BStack parallel webdriverio-appium',
-        debug: true,
-        networkLogs: true
-        }
-    },
     //
     // ===================
     // Test Configurations
@@ -132,20 +108,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // -- services: ['appium'],
-    user: process.env.BROWSERSTACK_USERNAME || 'enriquediaz_maWz1V',
-    key: process.env.BROWSERSTACK_ACCESS_KEY || 'pQsmFEn32d3UweGUAgQg',
-    hostname: 'hub.browserstack.com',
-    
-    services: ['appium',
-    [
-      'browserstack',
-      {
-        buildIdentifier: "${BUILD_NUMBER}",
-        browserstackLocal: true
-      },
-    ]
-    ],
+    services: ['appium'],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
