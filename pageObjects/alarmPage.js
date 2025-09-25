@@ -38,7 +38,7 @@ class AlarmPage {
 
     await this.hourElement(hour).click();
     await this.minuteElement(minute).click();
-
+    await browser.takeScreenshot();
     await this.okBtn.click();
   }
 

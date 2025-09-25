@@ -2,6 +2,7 @@ import { Given, When, Then } from '@wdio/cucumber-framework'
 import AlarmPage from '../../pageObjects/alarmPage.js';
 const assert = require('assert');
 
+
 Given('Estoy en la pestaña de alarmas', async () => {
     await AlarmPage.openAlarmTab();
 });
